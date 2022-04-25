@@ -1,0 +1,6 @@
+2531 [Test worker] INFO  manager.ApplicationManager - All test start in ChromeDriver
+3477 [Test worker] INFO  manager.ApplicationManager - The link is --> https://contacts-app.tobbymarshall815.vercel.app/home
+13620 [Test worker] INFO  tests.TestBase - Test start with email : 'sveta.mail.il@gmail.com' and password : 'Sveta2022$'
+10:58:30.622 INFO  manager.ApplicationManager - All test start in ChromeDriver
+10:58:31.521 INFO  manager.ApplicationManager - The link is --> https://contacts-app.tobbymarshall815.vercel.app/home
+10:58:41.609 INFO  tests.TestBase - Test start with email : 'sveta.mail.il@gmail.com' and password : 'Sveta2022$'

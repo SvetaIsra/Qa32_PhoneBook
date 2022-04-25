@@ -1,0 +1,22 @@
+15:34:28.600 INFO  manager.ApplicationManager - All test start in ChromeDriver
+15:34:29.414 INFO  manager.ApplicationManager - The link is --> https://contacts-app.tobbymarshall815.vercel.app/home
+15:34:29.453 INFO  tests.TestBase - Start test -->removeOneContact
+15:34:29.456 INFO  manager.MyListener - 'Start find' element --> By.xpath: //button[text()='Sign Out']
+15:34:39.539 INFO  manager.MyListener - The element with locator --> By.xpath: //button[text()='Sign Out'] <-- was found
+15:34:39.541 INFO  manager.MyListener - 'Start find' element --> By.cssSelector: [href='/login']
+15:34:39.565 INFO  manager.MyListener - The element with locator --> By.cssSelector: [href='/login'] <-- was found
+15:34:39.646 INFO  manager.MyListener - 'Start find' element --> By.xpath: //input[1]
+15:34:39.670 INFO  manager.MyListener - The element with locator --> By.xpath: //input[1] <-- was found
+15:34:39.804 INFO  manager.MyListener - 'Start find' element --> By.xpath: //input[2]
+15:34:39.829 INFO  manager.MyListener - The element with locator --> By.xpath: //input[2] <-- was found
+15:34:39.937 INFO  manager.MyListener - 'Start find' element --> By.xpath: //*[text()=' Login']
+15:34:39.964 INFO  manager.MyListener - The element with locator --> By.xpath: //*[text()=' Login'] <-- was found
+15:34:40.014 INFO  manager.MyListener - 'Start find' element --> By.cssSelector: [href='/contacts']
+15:34:40.663 INFO  manager.MyListener - The element with locator --> By.cssSelector: [href='/contacts'] <-- was found
+15:34:40.707 INFO  manager.MyListener - 'Start find' element --> By.cssSelector: .contact-item_card__2SOIM h3
+15:34:40.860 INFO  manager.MyListener - The element with locator --> By.cssSelector: .contact-item_card__2SOIM h3 <-- was found
+15:34:40.926 INFO  manager.MyListener - 'Start find' element --> By.xpath: //button[text()='Remove']
+15:34:40.947 INFO  manager.MyListener - The element with locator --> By.xpath: //button[text()='Remove'] <-- was found
+15:34:40.996 INFO  manager.MyListener - 'Start find' element --> By.cssSelector: h3
+15:34:41.021 INFO  manager.MyListener - The element with locator --> By.cssSelector: h3 <-- was found
+15:34:41.030 INFO  tests.TestBase - test passed

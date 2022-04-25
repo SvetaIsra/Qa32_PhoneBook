@@ -1,40 +1,48 @@
 package tests;
 
+import manager.MyDataProvider;
+import models.User;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
 public class LoginTests extends TestBase {
 
-    @Test
-    public void loginSuccess(){
-//        //open login form
-//        WebElement loginItem = wd.findElement(By.cssSelector("[href='/login']"));
-//        loginItem.click();
-//        //fill email
-//        WebElement emailInput = wd.findElement(By.xpath("//input[1]"));
-//        emailInput.click();
-//        emailInput.clear();
-//        emailInput.sendKeys("sveta.mail.il@gmail.com");
-//
-//        //fill password
-//        WebElement passwordInput = wd.findElement(By.xpath("//input[2]"));
-//        passwordInput.click();
-//        passwordInput.clear();
-//        passwordInput.sendKeys("Sveta2022$");
-//        //click button Login
-//        wd.findElement(By.xpath("//*[text()=' Login']")).click();
-//
-//        Assert.assertTrue(wd.findElements(By.xpath("//*[text()='Sign Out']")).size()>0);
-//        //Assert.assertTrue(sing_out_present?);
+    @BeforeMethod
+    public void preCondition(){
+        if(app.getHelperUser().isSignOutPresent()){
+            app.getHelperUser().signOut();
+        }
+    }
+
+    @Test(dataProvider = "validLoginData",dataProviderClass = MyDataProvider.class)
+    public void loginSuccessNew(String email, String password){
+        logger.info("Test start with email : " +email+ " and password : "+password+"");
+
+        app.getHelperUser().openLoginRegistrationForm();
+        app.getHelperUser().fillLoginRegistrationForm(email,password);
+        app.getHelperUser().submitLogin();
+        Assert.assertTrue(app.getHelperUser().isLoginRegistrationSuccess());
+        logger.info("test passed");
     }
     @Test
-    public void loginSuccessNew(){
+    public void loginSuccessModel(){
+        User user = new User().withEmail("sveta.mail.il@gmail.com").withPassword("Sveta2022$");
         app.getHelperUser().openLoginRegistrationForm();
-        app.getHelperUser().fillLoginRegistrationForm("sveta.mail.il@gmail.com","Sveta2022$");
+        app.getHelperUser().fillLoginRegistrationForm(user);
         app.getHelperUser().submitLogin();
         Assert.assertTrue(app.getHelperUser().isLoginRegistrationSuccess());
     }
+    @Test
+    public void LoginNegativeTestWrongPassword() {
+        User user = new User().withEmail("sveta.mail.il@gmail.com").withPassword("Sveta");
+        app.getHelperUser().openLoginRegistrationForm();
+        app.getHelperUser().fillLoginRegistrationForm(user);
+        app.getHelperUser().submitLogin();
+        Assert.assertFalse(app.getHelperUser().isLoginRegistrationSuccess());
+        Assert.assertTrue(app.getHelperUser().isAlertDisplayed());
+        Assert.assertTrue(app.getHelperUser().isErrorWrongFormat());
 
-
+    }
 }
