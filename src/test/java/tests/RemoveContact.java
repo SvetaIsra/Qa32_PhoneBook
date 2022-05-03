@@ -7,14 +7,14 @@ import org.testng.annotations.Test;
 
 public class RemoveContact extends TestBase {
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preCondition() {
-        if(!app.getHelperUser().isSignOutPresent()) {
+        if (!app.getHelperUser().isSignOutPresent()) {
             app.getHelperUser().login(new User().withEmail("sveta.mail.il@gmail.com").withPassword("Sveta2022$"));
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void removeOneContact() {
         app.contact().openAllContactsForm();
         app.contact().removeContact("1234567640");
@@ -23,12 +23,27 @@ public class RemoveContact extends TestBase {
         logger.info("test passed");
     }
 
-    @Test
+    @Test(groups = {"web"}, priority = 1)
+    public void removeOneContact2() {
+        Assert.assertEquals(app.contact().removeOneContact(), 1);
+    }
+
+    @Test(enabled = false)
     public void removeAllContacts() {
         app.contact().openAllContactsForm();
         app.contact().removeAllContacts();
 
         Assert.assertTrue(app.contact().isRemovedAllContactsSuccess());
         logger.info("test passed");
+    }
+
+    //  @Test (dependsOnMethods = "removeOneContact2")
+    @Test(priority = 2)
+    public void removeAllContacts2() {
+        app.contact().removeAllContacts2();
+
+        Assert.assertTrue(app.contact().isRemovedAllContactsSuccess());
+        logger.info("test passed");
+
     }
 }

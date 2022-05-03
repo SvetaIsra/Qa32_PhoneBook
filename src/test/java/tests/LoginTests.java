@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase {
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preCondition(){
         if(app.getHelperUser().isSignOutPresent()){
             app.getHelperUser().signOut();
@@ -26,6 +26,27 @@ public class LoginTests extends TestBase {
         Assert.assertTrue(app.getHelperUser().isLoginRegistrationSuccess());
         logger.info("test passed");
     }
+
+    @Test(dataProvider = "validModelLogin",dataProviderClass = MyDataProvider.class)
+    public void loginModelDataProvider(User user){
+
+        app.getHelperUser().openLoginRegistrationForm();
+        app.getHelperUser().fillLoginRegistrationForm(user);
+        app.getHelperUser().submitLogin();
+        Assert.assertTrue(app.getHelperUser().isLoginRegistrationSuccess());
+        logger.info("test passed");
+
+    }
+
+    @Test(dataProvider = "validModelCSV",dataProviderClass = MyDataProvider.class)
+    public void loginModelDataProviderCSV(User user) {
+
+        app.getHelperUser().openLoginRegistrationForm();
+        app.getHelperUser().fillLoginRegistrationForm(user);
+        app.getHelperUser().submitLogin();
+        Assert.assertTrue(app.getHelperUser().isLoginRegistrationSuccess());
+        logger.info("test passed");
+    }
     @Test
     public void loginSuccessModel(){
         User user = new User().withEmail("sveta.mail.il@gmail.com").withPassword("Sveta2022$");
@@ -34,7 +55,7 @@ public class LoginTests extends TestBase {
         app.getHelperUser().submitLogin();
         Assert.assertTrue(app.getHelperUser().isLoginRegistrationSuccess());
     }
-    @Test
+    @Test(groups = {"web"})
     public void LoginNegativeTestWrongPassword() {
         User user = new User().withEmail("sveta.mail.il@gmail.com").withPassword("Sveta");
         app.getHelperUser().openLoginRegistrationForm();

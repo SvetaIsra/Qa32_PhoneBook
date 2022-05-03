@@ -95,4 +95,35 @@ public class HelperContact extends HelperBase{
         }
         return false;
     }
+
+    public int removeOneContact() {
+        int countBefore = countOfContacts();
+        if(!isCountListEmpty()) {
+            click(By.cssSelector(".contact-item_card__2SOIM"));
+            click(By.xpath("//button[text()='Remove']"));
+            pause(500);
+        }
+        int countAfter = countOfContacts();
+        return countBefore-countAfter;
+    }
+
+    private boolean isCountListEmpty() {
+        return wd.findElements(By.cssSelector(".contact-item_card__2SOIM")).isEmpty();
+    }
+
+    private int countOfContacts() {
+        return wd.findElements(By.cssSelector(".contact-item_card__2SOIM")).size();
+    }
+
+    public void removeAllContacts2() {
+        while (wd.findElements(By.cssSelector(".contact-item_card__2SOIM")).size() != 0) {
+            click(By.cssSelector(".contact-item_card__2SOIM"));
+            click(By.xpath("//button[text()='Remove']"));
+            pause(500);
+        }
+    }
+
+    public void provideContactData() {
+        //add.contacts 3/4
+    }
 }

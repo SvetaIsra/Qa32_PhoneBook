@@ -1,0 +1,5 @@
+10:18:53.200 INFO  manager.TestNgMyListener - onStart(ISuite suite)
+10:18:53.208 INFO  manager.TestNgMyListener - onStartRegression
+10:18:53.242 INFO  manager.TestNgMyListener - onTestStartnull
+10:18:56.689 INFO  manager.TestNgMyListener - onFinish
+10:18:56.691 INFO  manager.TestNgMyListener - onFinish(ISuite suite)

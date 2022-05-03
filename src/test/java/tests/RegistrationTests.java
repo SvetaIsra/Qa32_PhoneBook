@@ -6,14 +6,14 @@ import org.testng.annotations.Test;
 
 public class RegistrationTests extends TestBase {
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void preCondition() {
         if(app.getHelperUser().isSignOutPresent()) {
             app.getHelperUser().signOut();
         }
     }
 
-    @Test
+    @Test(groups = {"web"})
     public void registrationSuccess() {
         int index = (int)(System.currentTimeMillis()/1000)%3600;
         logger.info("sonya"+index+"@gmail.com");
